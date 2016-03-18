@@ -12,21 +12,13 @@ var app = express();
 
 app.use(express.static('public'));
 
-// 对网站首页的访问返回 "Hello World!" 字样
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+var swig = require('swig'),
+  people;
 
-var server = app.listen(8000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
-});
-
+app.set('view engine','html');
+app.engine('html',swig.renderFile);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -75,6 +67,18 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});
+
+// 对网站首页的访问返回 "Hello World!" 字样
+app.get('/', function (req, res) {
+  // res.render('index',{});
+});
+
+var server = app.listen(8000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
 });
 
 module.exports = app;
