@@ -2,44 +2,55 @@
 
 {% block title %}ziroom{% endblock %}
 
-{% block header%}
-  <header class="mycarousel">
-  	<nav class="navbar navbar-transparent">
-  	  <div class="container-fluid">
-  	  	<div class="navbar-header">
-  	  		<a href="#" class="navbar-brand">
-  	  			<img src="images/logo-white.png" alt="ziroom">
-  	  		</a>
-  	  	</div>
-  	  	<div class="navbar-collapse">
-  	  		<ul class="nav navbar-nav navbar-right">
-  	  			<li class="signin">注册</li>
-  	  			<li class="login">登录</li>
-  	  		</ul>
-  	  	</div>
-  	  </div>
-  	</nav>
-  	<div id="carousel-example-generic" class="carousel slide" datd-ride="carousel">
-  		<ol class="carousel-indicators">
-  			<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  		</ol>
-  		<div class="carousel-inner" role="listbox">
-  			<div class="item active">
-  				<img src="images/big-pic.jpg" alt="first">
-  			</div>
-  			<div class="item">
-  				<img src="images/big-pic.jpg" alt="second">
-  			</div>
-  			<div class="item">
-  				<img src="images/big-pic.jpg" alt="thrid">
-  			</div>
-  		</div>
-  	</div>
-  </header>
+{% block header %}
+  <div class="mycarousel">
+    {% parent %}
+    {% block carousel %}
+      <div id="carousel-example-generic" class="carousel slide" datd-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="images/big-pic.jpg" alt="first">
+          </div>
+          <div class="item">
+            <img src="images/big-pic.jpg" alt="second">
+          </div>
+          <div class="item">
+            <img src="images/big-pic.jpg" alt="thrid">
+          </div>
+        </div>
+        <div class="headlines">
+          <h2>欢迎使用</h2>
+          <p>ziroom会给您提供独一无二的家政服务</p>
+          </div>
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+      </div>
+    {% endblock %}
+  </div>
 {% endblock %}
 
 {% block content %}
-  <p>This is just an awesome page.</p>
+  <div id="content">
+    <div class="main-container container-fluid">
+      <div class="col-md-3 col-sm-6 server clear-server">
+        <i class="img"></i>
+        <div>保洁预约</div>
+      </div>
+      <div class="col-md-3 col-sm-6 server maintain-server">
+        <i class="img"></i>
+        <div>日常维修</div>
+      </div>
+      <div class="col-md-3 col-sm-6 server recyc-server">
+        <i class="img"></i>
+        <div>废物回收</div>
+      </div>
+      <div class="col-md-3 col-sm-6 server pay-server">
+        <i class="img"></i>
+        <div>缴费</div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
